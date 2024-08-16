@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  # 젠킨스
+  jenkins:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    user: root
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - jenkins_home:/var/jenkins_home
+
+    networks:
+      - jenkins-network
+
+volumes:
+  jenkins_home:
+
+networks:
+  jenkins-network:
+    driver: bridge
