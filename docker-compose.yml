@@ -10,7 +10,7 @@ services:
     user: root
     container_name: jenkins
     ports:
-      - "8080:8080"
+      - "8000:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - jenkins_home:/var/jenkins_home
