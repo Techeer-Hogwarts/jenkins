@@ -11,7 +11,15 @@ RUN apt-get update && \
     ca-certificates \
     curl \
     gnupg \
-    lsb-release
+    lsb-release \
+    wget \
+    && wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz \
+    && tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz \
+    && rm go1.23.0.linux-amd64.tar.gz
+
+ENV PATH="/usr/local/go/bin:${PATH}"
+
+RUN curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b /usr/local/bin v1.60.1
 
 # 도커 gpg key 저장소
 RUN mkdir -p /etc/apt/keyrings
