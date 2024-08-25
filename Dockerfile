@@ -15,7 +15,9 @@ RUN apt-get update && \
     wget \
     && wget https://go.dev/dl/go1.23.0.linux-amd64.tar.gz \
     && tar -C /usr/local -xzf go1.23.0.linux-amd64.tar.gz \
-    && rm go1.23.0.linux-amd64.tar.gz
+    && rm go1.23.0.linux-amd64.tar.gz \
+    nodejs \
+    npm
 
 ENV PATH="/usr/local/go/bin:${PATH}"
 
